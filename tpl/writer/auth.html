@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8" />
+	<title>Project Picky › Authenticate</title>
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="stylesheet" href="/static/writer/simple.css" media="screen" />
+</head>
+<body>
+    <div id="Root">
+        <div class="inner"><form action="/writer/auth" method="post">
+            <h1>Login to Project Picky Writer</h1>
+            <div class="sep10"></div>
+            Please enter your secret passphrase you configured in auth.py
+            <div class="sep20"></div>
+            <input type="password" name="secret" value="" maxlength="32" class="sl"/>&nbsp;&nbsp;
+            <input class="super normal button" value="Continue" type="submit" />
+            {% if message %}
+            <div class="sep10"></div>
+            <span class="message">{{ message }}</span>
+            {% endif %}
+            <div class="sep20"></div>
+            <span class="version">Powered by <a href="">Project Picky</a> v{{ system_version }}</span>
+            {% if destination %}
+            <input type="hidden" name="destination" value="{{ destination }}" />
+            {% endif %}
+            </form>
+        </div>
+    </div>
+</body>
+</html>

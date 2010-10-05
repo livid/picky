@@ -1,0 +1,29 @@
+<div id="Sidebar">
+	<div class="inner">
+		<ul id="Nav">
+			{% for page in pages %}
+			<li><a href="/{{ page.title_url }}">{{ page.title|upper }}</a></li>
+			{% endfor %}
+			<li><a href="{{ feed_url }}">RSS</a></li>
+			<li><a href="/archive">ARCHIVE</a></li>
+		</ul>
+		<div class="sep40"></div>
+		<!--
+		<script type="text/javascript">
+		google_ad_client = "pub-9823529788289591";
+		/* 125x125, Project Picky */
+		google_ad_slot = "6959586595";
+		google_ad_width = 125;
+		google_ad_height = 125;
+		</script>
+		<script type="text/javascript"
+		src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+		</script>
+		-->
+		<div class="sep40"></div>
+		<div class="sep40"></div>
+		<a href="http://bitbucket.org/" target="_blank" class="img"><img src="/static/shared/bitbucket.png" border="0" alt="bitbucket.org" class="plain" /></a>
+		<div class="sep10"></div>
+		<div style="padding-left: 22px; text-align: left; font-size: 10px; color: #666"><a href="http://bitbucket.org/" target="_blank">Bitbucket</a> is a code hosting site, for the popular Mercurial version control system. With <strong>Wiki</strong> and <strong>a powerful issue tracker</strong>.</div>
+	</div>
+</div>

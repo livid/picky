@@ -1,0 +1,24 @@
+{% include 'header.html' %}
+<div id="Main">
+	<div class="w700">
+		<div class="tweet_box"><form action="/twitter/post" method="post" name="formTweet"><textarea name="status" id="status" maxlength="140" class="tweet_status"></textarea><div align="right"><a class="super normal button" id="doSubmit" href="javascript:document.formTweet.submit()">Update</a></div></form></div>
+		<ul class="tabs">
+			<li class="normal"><a href="/twitter" class="black">Home</a></li>
+			<li class="selected">Mentions</li>
+			<li class="normal"><a href="/twitter/inbox" class="black">Direct Messages</a></li>
+			{% for list in lists %}
+			<li class="normal"><a href="/twitter/list/{{ list.id }}" class="black">{{ list.name }}</a></li>
+			{% endfor %}
+		</ul>
+		<div class="twitter_user">Remaining API Hits: <strong style="color: #666;">{{ limit }}</strong></div>
+	{% for tweet in tweets %}<div class="tweet">
+		<span class="tweet_avatar roundAvatar roundAvatar_Medium"><a href="/twitter/user/{{ tweet.user.screen_name}}"><img align="absmiddle" src="{{ tweet.user.profile_image_url }}" border="0" /><img class="roundAvatar_Corner" src="/static/shared/round.png" border="0" /></a></span><div class="tweet_text"><div class="tweet_time">{{ tweet.datetime|timesince }} ago via {{ tweet.source }}</div><a href="/twitter/user/{{ tweet.user.screen_name }}" class="black"><strong>{{ tweet.user.screen_name }}</strong></a><br />{{ tweet.text|urlize }}</div>
+	</div>
+	{% endfor %}
+	</div>
+	<div class="c"></div>
+	<script type="text/javascript">window.onload = function() { document.getElementById("status").focus(); }</script>
+</div>
+{% include 'footer.html' %}
+</body>
+</html>

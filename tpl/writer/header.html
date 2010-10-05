@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8" />
+	<title>{% if page_title %}Project Picky › Writer › {{ page_title }}{% else %}Project Picky › Writer{% endif %}</title>
+	<link rel="stylesheet" type="text/css" media="screen"  href="/static/writer/style.css" />
+	{% if mode_twitter %}
+	<link rel="shortcut icon" href="/static/shared/twitter.ico" />
+	{% else %}
+	<link rel="shortcut icon" href="/favicon.ico" />
+	{% endif %}
+	<link rel="stylesheet" type="text/css" href="/static/shared/jquery.autocomplete.css" />
+	<script src="http://www.google.com/jsapi"></script>
+	<script>
+	google.load("jquery", "1");
+	</script>
+	<script src="/static/shared/jquery.autocomplete.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="Top"><div class="tr"><img src="/static/shared/web.png" align="absmiddle" /> <a href="/" class="white" target="_blank">Visit Site</a></div>
+	<a href="/writer/overview" class="white">Project Picky Writer</a> &nbsp; <img src="/static/shared/settings.png" align="absmiddle" />&nbsp;<a href="/writer/settings" class="white">Settings</a> &nbsp; <img src="/static/shared/twitter.png" align="absmiddle" />&nbsp;<a href="/twitter" class="white">Twitter</a>
+</div>

@@ -1,0 +1,45 @@
+{% include 'header.html' %}
+<body onload="setupZoom()">
+	<div id="Root">
+		<div id="Top"><a href="/" class="img"><img src="/static/themes/neue/logo.png" alt="Project Picky" id="Logo" /></a></div>
+		{% include 'sidebar.html' %}
+		<div id="Main">
+			<div class="inner">
+				{% if article.title %}<div class="title">{% if parent %}<a href="/{{ parent.title_url }}">{{ parent.title }}</a> &nbsp;»&nbsp; {% endif %}{% if article.title_link%}<a href="{{ article.title_link }}" target="_blank">{{ article.title }}</a>{% else %}{{ article.title }}{% endif %}</div>{% endif %}
+				<div class="content">
+					{% ifequal article.format 'markdown' %}
+						{{ article.content_formatted }}
+					{% else %}
+						{% ifequal article.format 'txt' %}
+							{{ article.content|linebreaksbr }}
+						{% else %}
+							{{ article.content }}
+						{% endifequal %}
+					{% endifequal %}
+					<div class="misc">Published at <strong>{{ article.created|timezone:8|date:"G:i \C\S\T, M j"|upper }}</strong> • {{ article.hits }}+{{ article.hits_feed }} views</div>
+					{% if related %}
+					<div class="related">RELATED ARTICLES</div>
+					{% for related_article in related %}
+					<div class="sep10"></div>
+					›&nbsp;<a href="/{{ related_article.title_url }}">{{ related_article.title }}</a>
+					{% endfor %}
+					<div class="sep10"></div>
+					{% else %}
+					{% endif %}
+					<div id="Ads">
+						<script type="text/javascript"><!--
+						google_ad_client = "pub-9823529788289591";
+						/* Picky Banner, Per Article, 468x60 */
+						google_ad_slot = "7266198519";
+						google_ad_width = 468;
+						google_ad_height = 60;
+						//-->
+						</script>
+						<script type="text/javascript"
+						src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+{% include 'footer.html' %}

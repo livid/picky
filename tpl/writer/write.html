@@ -1,0 +1,107 @@
+{% include 'header.html' %}
+<div id="Main">
+	<div id="Nav"><img src="/static/shared/home.png" align="absmiddle" class="ico16" />&nbsp;<a href="/writer/overview?page={{ page }}">Picky Backend</a> &nbsp;›&nbsp; {% ifequal page_mode 'new' %}New Article{% endifequal %}{% ifequal page_mode 'edit' %}Edit Article &nbsp;›&nbsp; {{ article.key }}{% endifequal %}</div>
+	{% if message %}
+	<div id="Message"><img src="/static/shared/minus.png" align="absmiddle" class="ico16" /> {{ message }}</div>
+	{% endif %}
+	<div id="Composing">
+	{% ifequal page_mode 'edit' %}
+	<form method="post" action="/writer/update/{{ article.key}}" name="formWrite">
+	<small class="fade">The article you're editing is created on {{ article.created|date:"r" }}, has {{ article.hits }} hits.<br /><a href="/{{ article.title_url }}" target="_blank">Open in a new tab  »&nbsp;</a></small>
+	<br /><br />
+	{% else %}
+	<form method="post" action="/writer/save" name="formWrite">
+	{% endifequal %}
+	Title<br />
+	<input type="text" class="sl" name="title" value="{% if article.title %}{{ article.title|escape }}{% endif %}" />
+	<br /><br />
+	Title Link<br />
+	<input type="text" class="sl" name="title_link" value="{% if article.title_link %}{{ article.title_link|escape }}{% endif %}" />
+	<br /><br />
+	Title URL<br />
+	<input type="text" class="sl" name="title_url" value="{% if article.title_url %}{{ article.title_url|escape }}{% endif %}" />
+	<br /><br />
+	Parent URL<br />
+	<input type="text" class="sl" name="parent_url" value="{% if article.parent_url %}{{ article.parent_url|escape }}{% endif %}" />
+	<br /><br />
+	{% if message %}
+	<strong>Content <span class="snow">Required</span></strong>
+	{% else %}
+	Content
+	{% endif %}
+	<br />
+	<textarea class="ml" name="content">{% if article.content %}{{ article.content|escape }}{% endif %}</textarea>
+	<br /><br />
+	Set<br />
+	<input type="text" class="sl" name="article_set" value="{% if article.article_set %}{{ article.article_set|escape }}{% endif %}" />
+	<br /><br />
+	Format<br />
+	{% ifequal page_mode 'new' %}
+	<select name="format">
+		{% ifequal site_default_format 'html' %}
+		<option value="html" selected="selected">HTML</option>
+		{% else %}
+		<option value="html">HTML</option>
+		{% endifequal %}
+		{% ifequal site_default_format 'markdown' %}
+		<option value="markdown" selected="selected">Markdown</option>
+		{% else %}
+		<option value="markdown">Markdown</option>
+		{% endifequal %}
+		{% ifequal site_default_format 'txt' %}
+		<option value="txt" selected="selected">Plain Text</option>
+		{% else %}
+		<option value="txt">Plain Text</option>
+		{% endifequal %}
+	</select>
+	{% else %}
+	<select name="format">
+		{% ifequal article.format 'html' %}
+		<option value="html" selected="selected">HTML</option>
+		{% else %}
+		<option value="html">HTML</option>
+		{% endifequal %}
+		{% ifequal article.format 'markdown' %}
+		<option value="markdown" selected="selected">Markdown</option>
+		{% else %}
+		<option value="markdown">Markdown</option>
+		{% endifequal %}
+		{% ifequal article.format 'txt' %}
+		<option value="txt" selected="selected">Plain Text</option>
+		{% else %}
+		<option value="txt">Plain Text</option>
+		{% endifequal %}
+	</select>
+	{% endifequal %}
+	<br /><br />
+	<small>Is Page: {% if article.is_page %}
+	<select name="is_page"><option value="True" selected="selected">Yes</option><option value="False">No</option></select>
+	{% else %}
+	<select name="is_page"><option value="True">Yes</option><option value="False" selected="selected">No</option></select>
+	{% endif %}</small>
+	<br /><br />
+	<small>Is for Sidebar: {% if article.is_for_sidebar %}
+	<select name="is_for_sidebar"><option value="True" selected="selected">Yes</option><option value="False">No</option></select>
+	{% else %}
+	<select name="is_for_sidebar"><option value="True">Yes</option><option value="False" selected="selected">No</option></select>
+	{% endif %}</small>
+	<br /><br />
+	<a class="super normal button" id="doSubmit" href="javascript:document.formWrite.submit()">Save</a>&nbsp;&nbsp;{% ifequal page_mode 'edit' %}<a class="super normal button" id="doDelete" href="#;" onclick="if (confirm('Are you sure?')) { location.href = '/writer/remove/{{ article.key }}';}">Delete</a>{% else %}<a class="super normal button" id="doDiscard" href="/writer/overview?page={{ page }}">Discard</a>{% endifequal %}
+	</form>
+	</div>
+	<div id="Explaination">
+		<strong>COMPOSING TIPS</strong>
+		<div class="sep20"></div>
+		<big>TITLE LINK</big> › For pointing to an external URL you want to share with your readers. When readers click TITLE, they will be redirected to TITLE LINK. You can leave this field alone.
+		<div class="sep20"></div>
+		<big>TITLE URL</big> › This is part of permalink, for example if your site URL is example.com then TITLE URL is used in <big>example.com/title-url</big> , you can have anything here, but - (hyphens) are recommended for replacing spaces in URL.
+		<div class="sep20"></div>
+		<big>PARENT URL</big> › You can put another article's TITLE URL here, then you'll create a hierarchy-like relationship for them.
+		<div class="sep20"></div>
+		<big>SET</big> › If you want this article appears in other articles' Related Articles section, you can use same SET to get them organized. Currently articles can be related with ONLY ONE set.
+	</div>
+	<div class="c"></div>
+</div>
+{% include 'footer.html' %}
+</body>
+</html>

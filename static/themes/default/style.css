@@ -1,0 +1,299 @@
+@charset "utf-8"
+
+/*
+	Project Picky CSS
+	
+	Author: Livid <v2ex.livid@me.com>
+	Web: http://picky.olivida.com/
+	
+	This is the vanilla configuration of style for Project Picky.
+	
+	The best way to wipe IE6 from this planet is to forget it all since the beginning of your every new project.
+*/
+
+html {
+	height: 100%;
+}
+
+body {
+	padding: 0px;
+	margin: 0px;
+	font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti !important;
+	background-color: #e2e2e2;
+	min-width: 900px;
+}
+
+h2 {
+	font-size: 16px;
+	line-height: 16px;
+	font-weight: bold;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding: 0px;
+}
+
+a:link, a:visited, a:active {
+	color: #69891b;
+	text-decoration: none;
+	border-bottom: 1px dotted #ccc;
+}
+
+a:hover {
+	color: #4a630f;
+	text-decoration: none;
+	border-bottom: 1px dotted #c0caaa;
+}
+
+code {
+	font-family: Panic Sans, Luxi Mono, "Courier New", Monaco;
+}
+
+/* IDs */
+
+#Root {
+	width: 800px;
+	margin: 0 auto 0 auto;
+}
+
+#Top {
+	height: 120px;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+#Logo {
+	border: none;
+}
+
+#Sidebar {
+	position: absolute;
+	top: 200px;
+	background-color: transparent;
+	width: 200px;
+	text-align: right;
+}
+
+#Sidebar .inner {
+	padding: 10px 50px 0px 0px;
+}
+
+#Nav {
+	padding: 0px;
+	margin: 0px;
+}
+
+#Nav li {
+	padding: 0px 0px 5px 0px;
+	font-size: 14px;
+	list-style: none;
+	font-weight: bold;
+	font-family: "Panic Sans", "Luxi Mono", "Courier New", Monaco;
+	letter-spacing: 1px;
+}
+
+#Nav a:link, #Nav a:visited, #Nav a:active {
+	color: #666;
+	text-decoration: none;
+	background-color: transparent;
+	padding: 3px 5px 2px 5px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border: none;
+}
+
+#Nav a:hover {
+	color: #333;
+	text-decoration: none;
+	background-color: #f3f3f3;
+	padding: 3px 5px 2px 5px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border: none;
+}
+
+#Main {
+	background-color: transparent;
+	margin: 0px 0px 0px 200px;
+	width: 600px;
+	min-height: 200px;
+}
+
+#Main .inner {
+	padding: 10px 0px 0px 10px;
+}
+
+#Main .header {
+	font-size: 10px;
+	line-height: 10px;
+	color: #aaa;
+	margin-bottom: 5px;
+}
+
+#Main .footer {
+	font-size: 12px;
+	line-height: 12px;
+	color: #aaa;
+	margin-top: 5px;
+}
+
+#Main .title {
+	font-size: 16px;
+	margin-bottom: 10px;
+	color: #333;
+}
+
+#Main .content {
+	font-size: 14px;
+	line-height: 22px;
+	color: #333;
+	text-align: left;
+	padding-left: 15px;
+	margin-bottom: 40px;
+}
+
+#Main .tail {
+	margin-bottom: 0px;
+}
+
+#Main .content .misc {
+	font-size: 10px;
+	line-height: 10px;
+	color: #aaa;
+	text-align: right;
+	margin-top: 10px;
+}
+
+#Main .content blockquote {
+	border-left: 1px solid #ccc;
+	padding-left: 15px;
+	margin-left: 0px;
+}
+
+#Main .content ul, #Main .content ol {
+	padding-left: 18px;
+	margin-left: 0px;
+}
+
+#Main .content img {
+	border: none;
+	padding: 2px;
+	background-color: rgba(255,255,255,0.8);
+	-moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
+	-webkit-box-shadow: 0px 1px 3px rgba(0,0,0,.15);
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#Main .content img.plain {
+	border: none;
+	padding: 0px;
+	background-color: transparent;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-border-radius: none;
+	-webkit-border-radius: none;
+	border-radius: none;
+}
+
+#Main .content .permaicon {
+	border: none;
+	padding: 0px 5px 0px 5px;
+	background-color: transparent;
+}
+
+#Main .content .permaicon:hover {
+	border: none;
+	padding: 0px 5px 0px 5px;
+	background-color: rgba(255,255,255,0.8);
+}
+
+#Main .sep {
+	height: 10px;
+}
+
+#Main .hr {
+	padding: 0px;
+	margin: 10px 0px 10px 0px;
+	height: 1px;
+	background-color: #ccc;
+}
+
+#Ads {
+	text-align: right;
+	padding-top: 10px;
+}
+
+#Footer {
+	background-color: transparent;
+	color: #999;
+	text-align: right;
+	font-size: 10px;
+	line-height: 7px;
+	font-family: "Panic Sans", "Luxi Mono", "Courier New", Monaco;
+	font-weight: bold;
+	margin-top: 40px;
+	margin-bottom: 80px;
+}
+
+a.dark:link, a.dark:visited, a.dark:active {
+	color: #999;
+	text-decoration: none;
+	border: none;
+}
+
+a.dark:hover {
+	color: #666;
+	text-decoration: underline;
+	border: none;
+}
+
+a.img {
+	border: none;
+}
+
+.sl {
+	padding: 3px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	width: 550px;
+	font-size: 14px;
+	color: #000;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	font-family: "Panic Sans", Luxi Mono, "Courier New", Monaco;
+}
+
+.sl:focus {
+	border: 1px solid #999;
+}
+
+.code {
+	padding: 3px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	width: 550px;
+	height: 100px;
+	font-size: 14px;
+	color: #000;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	font-family: "Panic Sans", Luxi Mono, "Courier New", Monaco;
+	overflow-x: hidden;
+}
+
+.code:focus {
+	border: 1px solid #999;
+}
+
+.fade {
+	color: #999;
+}
+
+.sep10 {
+	height: 10px;
+}
+
+.sep40 {
+	height: 40px;
+}

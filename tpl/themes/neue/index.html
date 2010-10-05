@@ -1,0 +1,42 @@
+{% include 'header.html' %}
+<body onload="setupZoom()">
+	<div id="Root">
+		<div id="Top"><a href="/" class="img"><img src="/static/themes/neue/logo.png" alt="Project Picky" id="Logo" /></a></div>
+		{% include 'sidebar.html' %}
+		<div id="Main">
+			<div class="inner">
+				{% if page_archive %}
+				<div class="header">COMPLETE ARCHIVE</div>
+				{% else %}
+					{% if page_top %}
+					<div class="header">20 MOST VIEWED ARTICLES</div>
+					{% endif %}
+				{% endif %}
+				{% for article in articles %}
+				{% if article.title %}<div class="title">{% if article.title_link%}<a href="{{ article.title_link }}" target="_blank">{{ article.title }}</a>{% else %}{{ article.title }}{% endif %}</div>{% endif %}
+				{% if forloop.last %}
+				<div class="content tail">
+				{% else %}
+				<div class="content">
+				{% endif %}
+				{% ifequal article.format 'markdown' %}
+					{{ article.content_formatted }}
+				{% else %}
+					{% ifequal article.format 'txt' %}
+						{{ article.content|linebreaksbr }}
+					{% else %}
+						{{ article.content }}
+					{% endifequal %}
+				{% endifequal %}
+				<div class="misc"><strong>{{ article.created|timezone:8|date:"G:i, M j"|upper }}</strong>&nbsp;•&nbsp;<a href="/{{ article.title_url }}">Permalink</a></div>
+				</div>
+				{% endfor %}
+				{% if page_archive %}
+				{% else %}
+				{% if articles_total %}
+				<div class="footer"><a href="/archive">Previous Articles</a></div>
+				{% endif %}
+				{% endif %}
+			</div>
+		</div>
+{% include 'footer.html' %}

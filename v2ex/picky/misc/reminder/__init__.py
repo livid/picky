@@ -1,0 +1,1 @@
+writer_write = 'Title, Title Link and Title URL are not required, only required field is Content. But you can put external link you want to mention in Title Link, and Title URL is for SEO purpose only.'

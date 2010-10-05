@@ -1,0 +1,17 @@
+html { height: 100%; }
+body { padding: 0px; margin: 0px; background-color: #e2e2e2; font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "STHeiti"; }
+h1 { font-size: 18px; color: #333; text-shadow: 0px 1px 1px rgba(0,0,0,0.1); line-height: 18px; padding: 0px; margin: 0px; font-weight: 500; }
+a:link, a:visited, a:active { color: #1c7fdb; text-decoration: none;}
+a:hover { color: #1785eb; text-decoration: underline; }
+/* IDs */
+#Root { width: 400px; background-color: #fff; margin: 40px auto 40px auto; -moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; -moz-box-shadow: 0px 1px 10px rgba(0,0,0,0.1); -webkit-box-shadow: 0px 1px 10px rgba(0,0,0,0.1); box-shadow: 0px 1px 10px rgba(0,0,0,0.1); }
+#Root .inner { padding: 15px; font-size: 11px; color: #666; }
+/* CLASSes */
+.super.button { background-image: url("/static/writer/bg_blended.png"); padding: 4px 15px 4px 15px; border: 1px solid rgba(0,0,0,.25); border-bottom-color: rgba(0,0,0,.35); -webkit-border-radius: 15px; -moz-border-radius: 15px; border-radius: 15px; font-size: 12px; line-height: 12px; }
+.normal.button { background-color: #fff; color: #333; text-shadow: 0px 1px 1px #fff; text-decoration: none; font-weight: bold; }
+.normal.button:hover { background-color: #f0f0f0; color: #333; text-shadow: 0px 1px 1px #fff; text-decoration: none; text-decoration: none; font-weight: bold; cursor: pointer; }
+.sep10 { height: 10px; } .sep20 { height: 20px; }
+.version { font-size: 10px; color: #ccc; line-height: 10px; }
+.message { font-size: 11px; color: #c33; line-height: 11px; }
+.sl { padding: 4px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; width: 200px; font-size: 12px; line-height: 12px; color: #000; background-color: #fff; border: 1px solid #ccc; font-family: "Panic Sans", Luxi Mono, "Courier New", Monaco; }
+.sl:focus { border-color: #6c0; }

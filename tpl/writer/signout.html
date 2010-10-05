@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8" />
+	<title>Project Picky › Signed Out</title>
+	<link rel="stylesheet" type="text/css" media="screen"  href="/static/writer/auth.css" />
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="stylesheet" href="/static/writer/simple.css" media="screen" />
+</head>
+<body>
+    <div id="Root">
+        <div class="inner"><form action="/writer/auth" method="post">
+            <h1>Signed out from Project Picky Writer</h1>
+            <div class="sep10"></div>
+            You've signed out successfully, no private information left on this computer.
+            <div class="sep20"></div>
+            Return to <a href="http://{{ site_domain }}">{{ site_name }}</a> or <a href="/writer/auth">Sign In</a> again
+            <div class="sep20"></div>
+            <span class="version">Powered by <a href="">Project Picky</a> v{{ system_version }}</span>
+        </div>
+    </div>
+</body>
+</html>

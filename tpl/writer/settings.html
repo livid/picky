@@ -1,0 +1,90 @@
+{% include 'header.html' %}
+<div id="Main">
+	<div id="Nav"><img src="/static/shared/home.png" align="absmiddle" class="ico16" />&nbsp;<a href="/writer/overview">Picky Backend</a> &nbsp;›&nbsp; Settings</div>
+	<div class="w600">
+	{% if message %}
+	<div id="Message"><img src="/static/shared/minus.png" align="absmiddle" class="ico16" /> {{ message }}</div>
+	{% endif %}
+	<form method="post" action="/writer/settings" name="formSettings">
+	<h1>General</h1>
+	<div class="sep10"></div>
+	<small class="fade">These options affect user experience and SEO.</small>
+	<div class="sep10"></div>
+	Primary Domain<br />
+	<input type="text" class="sls" name="site_domain" value="{% if site_domain %}{{ site_domain|escape }}{% endif %}" />
+	<br /><br />
+	Secondary Domain for Sync<br />
+	<input type="text" class="sls" name="site_domain_sync" value="{% if site_domain_sync %}{{ site_domain_sync|escape }}{% endif %}" />
+	<br /><br />
+	Site Name<br />
+	<input type="text" class="sls" name="site_name" value="{% if site_name %}{{ site_name|escape }}{% endif %}" />
+	<br /><br />
+	Author<br />
+	<input type="text" class="sls" name="site_author" value="{% if site_author %}{{ site_author|escape }}{% endif %}" />
+	<br /><br />
+	Slogan<br />
+	<input type="text" class="sl" name="site_slogan" value="{% if site_slogan %}{{ site_slogan|escape }}{% endif %}" />
+	<br /><br />
+	Google Analytics ID <small class="snow">e.g. UA-11940834-1</small><br />
+	<input type="text" class="sls" name="site_analytics" value="{% if site_analytics %}{{ site_analytics|escape }}{% endif %}" />
+	<br /><br />
+	Theme<br />
+	<select name="site_theme">
+		{% for theme in themes %}
+		{% ifequal site_theme theme %}
+		<option value="{{ theme }}" selected="selected">{{ theme }}</option>
+		{% else %}
+		<option value="{{ theme }}">{{ theme }}</option>
+		{% endifequal %}
+		{% endfor %}
+	</select>
+	<br /><br />
+	Default Format for New Post<br />
+	<select name="site_default_format">
+		{% ifequal site_default_format 'html' %}
+		<option value="html" selected="selected">HTML</option>
+		{% else %}
+		<option value="html">HTML</option>
+		{% endifequal %}
+		{% ifequal site_default_format 'markdown' %}
+		<option value="markdown" selected="selected">Markdown</option>
+		{% else %}
+		<option value="markdown">Markdown</option>
+		{% endifequal %}
+		{% ifequal site_default_format 'txt' %}
+		<option value="txt" selected="selected">Plain Text</option>
+		{% else %}
+		<option value="txt">Plain Text</option>
+		{% endifequal %}
+	</select>
+	<div class="sep"></div>
+	<h1>Twitter</h1>
+	<div class="sep10"></div>
+	<small class="fade">By turning on this option, your every post will be synchronized to your Twitter.</small>
+	<div class="sep10"></div>
+	Twitter Account<br />
+	<input type="text" class="sls" name="twitter_account" value="{% if twitter_account %}{{ twitter_account|escape }}{% endif %}" />
+	<br /><br />
+	Twitter Password<br />
+	<input type="password" class="sls" name="twitter_password" value="{% if twitter_password %}{{ twitter_password|escape }}{% endif %}" />
+	<br /><br />
+	<small>Twitter Sync: {% if twitter_sync %}
+	<select name="twitter_sync"><option value="True" selected="selected">On</option><option value="False">Off</option></select>
+	{% else %}
+	<select name="twitter_sync"><option value="True">On</option><option value="False" selected="selected">Off</option></select>
+	{% endif %}</small>
+	<div class="sep"></div>
+	<h1>Integration</h1>
+	<div class="sep10"></div>
+	<small class="fade">Integrate various 3rd-party services here.</small>
+	<div class="sep10"></div>
+	Alternative Feed<br />
+	<input type="text" class="sl" name="feed_url" value="{% if feed_url %}{{ feed_url|escape }}{% endif %}" />
+	<div class="sep"></div>
+	<a class="super normal button" id="doSubmit" href="javascript:document.formSettings.submit()">Save</a>
+	</form>
+	</div>
+</div>
+{% include 'footer.html' %}
+</body>
+</html>

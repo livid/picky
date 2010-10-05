@@ -1,0 +1,31 @@
+		<div id="Footer">
+		&copy; 2009-2010 {{ site_author }}<br /><br />
+		Powered by <a href="http://picky.olivida.com/picky" target="_blank">Picky</a> + <a href="http://code.google.com/appengine" target="_blank" class="dark">Google App Engine</a>
+		</div>
+	</div>
+	{% if site_analytics %}
+	<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+	try {
+	var pageTracker = _gat._getTracker("{{ site_analytics }}");
+	pageTracker._setDomainName("none");
+	pageTracker._setAllowLinker(true);
+	pageTracker._trackPageview();
+	} catch(err) {}</script>
+	<!-- Start Quantcast tag -->
+	<script type="text/javascript">
+	_qoptions={
+	qacct:"p-909v3qATxSOrQ"
+	};
+	</script>
+	<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+	<noscript>
+	<img src="http://pixel.quantserve.com/pixel/p-909v3qATxSOrQ.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/>
+	</noscript>
+	<!-- End Quantcast tag -->
+	{% endif %}
+</body>
+</html>

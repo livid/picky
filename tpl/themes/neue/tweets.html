@@ -1,0 +1,29 @@
+{% include 'header.html' %}
+<body onload="setupZoom()">
+	<div id="Root">
+		<div id="Top"><a href="/" class="img"><img src="/static/themes/neue/logo.png" alt="Project Picky" id="Logo" /></a></div>
+		{% include 'sidebar.html' %}
+		<div id="Main">
+			<div class="inner">
+				<div class="title"><span class="tweet_avatar roundAvatar roundAvatar_Medium" style="float: left;"><a href="http://twitter.com/{{ twitter_account }}" target="_blank"><img align="absmiddle" src="{{ twitter_avatar }}" border="0" /><img class="roundAvatar_Corner" src="/static/shared/round.png" border="0" /></a></span>@<a href="http://twitter.com/{{ twitter_account }}" target="_blank">{{ twitter_account }}</a><br /><small class="fade">{{ twitter_followers }} followers</small></div>
+				<div class="content">
+					{% for tweet in tweets%}
+					<blockquote>{{ tweet.text|urlize }}<div class="sep5"></div><div align="right"><small style="color: #aaa">{{ tweet.datetime|timesince }} ago</small></div></blockquote>
+					{% endfor %}
+					<div id="Ads">
+						<script type="text/javascript"><!--
+						google_ad_client = "pub-9823529788289591";
+						/* Picky Banner, Per Article, 468x60 */
+						google_ad_slot = "7266198519";
+						google_ad_width = 468;
+						google_ad_height = 60;
+						//-->
+						</script>
+						<script type="text/javascript"
+						src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+{% include 'footer.html' %}

@@ -1,0 +1,81 @@
+{% include 'header.html' %}
+<div id="Main">
+	<div id="Mentions">
+		<strong>Mentions on Web</strong>
+		{% if mentions_web %}
+		<ul>
+			{% for mention in mentions_web %}
+			<li><a href="{{ mention.link }}" target="_blank">{{ mention.title }}</a> <span class="fade">by</span> <a href="{{ mention.author_detail.href }}" target="_blank">{{ mention.author_detail.name }}</a></li>
+			{% endfor %}
+		</ul>
+		{% else %}
+		<p class="snow">Currently no one mentioned you.</p>
+		{% endif %}
+		<div class="sep"></div>
+		<strong><img src="/static/shared/twitter.png" align="absmiddle" /> Mentions on Twitter</strong>
+		{% if mentions_twitter %}
+		<ul>
+			{% for mention in mentions_twitter %}
+			<li>{{ mention.text|urlize }} <span class="fade">by</span> <a href="https://twitter.com/{{ mention.from_user }}" target="_blank">{{ mention.from_user }}</a></li>
+			{% endfor %}
+		</ul>
+		{% else %}
+		<p class="snow">Currently no one twittered you.</p>
+		{% endif %}
+	</div>
+	<div id="Nav"><img src="/static/shared/home.png" align="absmiddle" class="ico16" />&nbsp;Picky Backend</div>
+	{% if site_configured %}
+	{% else %}
+	<small class="fade">Your site is not fully configured, please visit <img src="/static/shared/settings.png" align="absmiddle" />&nbsp;<a href="/writer/settings">Settings</a> now.</small>
+	<div class="sep10"></div>
+	{% endif %}
+	{% if message %}
+	<div class="message" id="SessionMessage" onclick="$('#SessionMessage').fadeOut();">{{ message }}</div>
+	<div class="sep10"></div>
+	{% endif %}
+	<div id="Operations"><div id="Quickfind"><form method="post" action="/writer/quick/find">Quick Find <input type="text" class="qf" name="qf" id="qf" /></form>
+	<script type="text/javascript">
+	var urls = new Array();
+	{% for url in urls %}urls[{{ forloop.counter0 }}] = '{{ url }}';{% endfor %}
+	$("#qf").autocompleteArray(urls, { autoFill:true });
+	</script>
+	</div><a class="super normal button" id="writeNew" href="/writer/new">Write a New Article</a></div>
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" class="data">
+		<tr>
+			<th width="20"></td>
+			<th width="auto">Title</td>
+			<th width="100">Created</td>
+			<th width="100">Last Modified</td>
+			<th width="30">Hits</td>
+		</tr>
+		{% for article in articles %}
+		<tr>
+			<td class="{% if forloop.counter|divisibleby:2 %}alt{% endif %}"></td>
+			<td class="{% if forloop.counter|divisibleby:2 %}alt{% endif %}"><a href="/writer/edit/{{ article.key }}" class="dark">{% if article.title %}{{ article.title }}{% else %}Untitled{% endif %}</a> <a href="/{{ article.title_url }}" target="_blank">&nbsp;»&nbsp;</a> {% if article.is_page %}<div class="blue_badge">PAGE</div>{% if article.is_for_sidebar %}{% else %} <div class="graphite_badge">ISOLATED</div>{% endif %}{% endif %}{% if article.title_url %}<div><small class="snow">{{ article.format }} : {{ article.title_url }}{% if article.article_set %} (set="{{ article.article_set }}"){% endif %}</small></div>{% endif %}<div class="op"><a href="#;" onclick="if (confirm('Are you sure?')) { location.href = '/writer/remove/{{ article.key }}';}">Delete</a></div></td>
+			<td class="dt {% if forloop.counter|divisibleby:2 %}alt{% endif %}">{{ article.created|date:"Y-m-d H:i:s" }}</td>
+			<td class="dt {% if forloop.counter|divisibleby:2 %}alt{% endif %}">{{ article.last_modified|date:"Y-m-d H:i:s" }}</td>
+			<td class="{% if forloop.counter|divisibleby:2 %}alt{% endif %}" align="right">{{ article.hits }}+{{ article.hits_feed }}</td>
+		</tr>
+		{% endfor %}
+		{% ifequal articles_total 0 %}
+		<tr>
+			<td class="alt" colspan="5"><div align="center" style="padding: 20px 0px 20px 0px;">No article. <a href="/writer/new">Write one</a> now?</div></td>
+		</tr>
+		{% endifequal %}
+	</table>
+	{% if is_paginated %}
+	<div id="Pages">
+		<div id="Numbers">{% for p in page_range %}{% ifequal p page %}{{ p|add:"1" }}&nbsp;{% else %}<a href="/writer/overview?page={{ p }}" class="page">{{ p|add:"1" }}</a>&nbsp;{% endifequal %}{% endfor %}</div>
+	{% if page_has_next %}
+	<a class="super normal button" id="doNext" href="/writer/overview?page={{ next }}">Next</a>
+	{% endif %}
+	{% if page_has_previous %}
+	<a class="super normal button" id="doPrevious" href="/writer/overview?page={{ previous }}">Previous</a>
+	{% endif %}
+	</div>
+	{% endif %}
+	<div class="c"></div>
+</div>
+{% include 'footer.html' %}
+</body>
+</html>

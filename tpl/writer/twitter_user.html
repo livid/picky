@@ -1,0 +1,29 @@
+{% include 'header.html' %}
+<div id="Main">
+	<div class="w700">
+		<div class="tweet_box"><form action="/twitter/post" method="post" name="formTweet"><textarea name="status" id="status" maxlength="140" class="tweet_status">@{{ twitter_user.screen_name}} </textarea><div align="right"><a class="super normal button" id="doSubmit" href="javascript:document.formTweet.submit()">Update</a></div></form></div>
+		<ul class="tabs">
+			<li class="normal"><a href="/twitter" class="black">Home</a></li>
+			<li class="normal"><a href="/twitter/mentions" class="black">Mentions</a></li>
+			<li class="normal"><a href="/twitter/inbox" class="black">Direct Messages</a></li>
+			{% for list in lists %}
+			<li class="normal"><a href="/twitter/list/{{ list.id }}" class="black">{{ list.name }}</a></li>
+			{% endfor %}
+			<li class="selected">{{ twitter_user.screen_name}}</li>
+		</ul>
+		{% if me %}
+		<div class="twitter_user">This is <strong>YOU</strong></div>
+		{% else %}
+		<div class="twitter_user"><strong><a href="{{ twitter_user.url }}" target="_blank">{{ twitter_user.screen_name }}</a></strong> ( {{ twitter_user.followers_count }} followers, following {{ twitter_user.friends_count }}, {{ twitter_user.location }} ) {% if friendships_ba %}is{% else %}is not{% endif %} following you &nbsp;{% if friendships_ab %}<input type="button" class="twitter_btn" value="UNFOLLOW" onclick="location.href='/twitter/unfollow/{{ twitter_user.screen_name }}'" />{% else %}<input type="button" class="twitter_btn" value="FOLLOW" onclick="location.href='/twitter/follow/{{ twitter_user.screen_name }}'" />{% endif %}</div>
+		{% endif %}
+	{% for tweet in tweets %}<div class="tweet">
+		<span class="tweet_avatar roundAvatar roundAvatar_Medium"><a href="/twitter/user/{{ tweet.user.screen_name}}"><img align="absmiddle" src="{{ tweet.user.profile_image_url }}" border="0" /><img class="roundAvatar_Corner" src="/static/shared/round.png" border="0" /></a></span><div class="tweet_text"><div class="tweet_time">{{ tweet.datetime|timesince }} ago via {{ tweet.source }}</div><a href="/twitter/user/{{ tweet.user.screen_name }}" class="black"><strong>{{ tweet.user.screen_name }}</strong></a><br />{{ tweet.text|urlize }}</div>
+	</div>
+	{% endfor %}
+	</div>
+	<div class="c"></div>
+	<script type="text/javascript">window.onload = function() { document.getElementById("status").focus(); }</script>
+</div>
+{% include 'footer.html' %}
+</body>
+</html>

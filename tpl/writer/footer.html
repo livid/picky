@@ -1,0 +1,24 @@
+<div id="Footer"><a href="http://code.google.com/appengine" target="_blank"><img src="http://code.google.com/appengine/images/appengine-silver-120x30.gif" alt="Powered by Google App Engine" align="right" border="0" /></a>
+	{% if page_reminder %}
+	<div id="Reminder">{{ page_reminder }}</div>
+	{% else %}
+	<div id="Reminder"><a href="/writer/signout">Sign Out</a></div>
+	{% endif %}
+	<div id="Powered">
+		Powered by <a href="http://picky.olivida.com/" target="_blank">Picky</a> v{{ system_version }} + <a href="http://code.google.com/appengine" target="_blank">Google App Engine</a><br />
+		&copy; 2009 Livid
+	</div>
+</div>
+{% if site_analytics %}
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("{{ site_analytics }}");
+pageTracker._setDomainName("none");
+pageTracker._setAllowLinker(true);
+pageTracker._trackPageview();
+} catch(err) {}</script>
+{% endif %}
